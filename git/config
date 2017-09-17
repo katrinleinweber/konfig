@@ -30,6 +30,14 @@
 	tool = Kaleidoscope
 [core]
 	excludesfile = ~/.config/git/ignore
+
+[alias]
+    cs = clone --depth=1 --no-single-branch
+	c1 = cs	
+
+	# https://gist.github.com/katrinleinweber/f89a07bda89bd9f98b34a831b8c2105a
+	ad = !bash ~/.config/git/Arbeitsdreieck.sh
+	cf = ad
 	
 [color]
 	ui = auto
