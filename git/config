@@ -52,5 +52,11 @@
 	undo = reset HEAD~1 --mixed
     wip = commit -am "WIP"
     wipe = !git add -A && git commit -qm "WIPE SAVEPOINT" && git reset HEAD~1 --hard
+
+	# https://www.jessesquires.com/blog/customizing-git-log/
+    me = me '!git smartlog --author=Katrin Leinweber'
+	smartlog = log --graph --pretty=format:'%C(bold red)%h %C(bold magenta)%d %Creset%n%C(bold yellow)%cr %Creset%C(yellow)(on %cd)%Creset%n%ae%n%C(cyan)%s%n%Creset'
+	sl = smartlog
+
 [color]
 	ui = auto
