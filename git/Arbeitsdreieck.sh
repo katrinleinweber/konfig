@@ -1,4 +1,5 @@
 #!bash
+set -e
 
 UPSTREAM=$1
 ME=katrinleinweber
