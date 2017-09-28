@@ -4,7 +4,12 @@ set -e
 UPSTREAM=$1
 ME=katrinleinweber
 
-git clone $UPSTREAM --depth=1 --no-single-branch --origin upstream
+git clone \
+	--depth=1 \
+	--no-single-branch \
+	--origin upstream \
+	$UPSTREAM 
+
 REPO=`echo $UPSTREAM | cut -f 5 -d / | cut -f 1 -d .` 
 cd $REPO
 
