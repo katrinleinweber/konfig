@@ -33,12 +33,10 @@
 
 [alias]
 	last = log -1 HEAD
-    cs = clone --depth=1 --no-single-branch
-	c1 = cs	
+    	cs = clone --depth=1 --no-single-branch	
 
 	# https://gist.github.com/katrinleinweber/f89a07bda89bd9f98b34a831b8c2105a
 	ad = !bash ~/.config/git/Arbeitsdreieck.sh
-	cf = ad
 	
 	# http://haacked.com/archive/2014/07/28/github-flow-aliases/
 	amend = commit -a --amend
@@ -55,8 +53,7 @@
 
 	# https://www.jessesquires.com/blog/customizing-git-log/
     me = me '!git smartlog --author=Katrin Leinweber'
-	smartlog = log --graph --pretty=format:'%C(bold red)%h %C(bold magenta)%d %Creset%n%C(bold yellow)%cr %Creset%C(yellow)(on %cd)%Creset%n%ae%n%C(cyan)%s%n%Creset'
-	sl = smartlog
+	sl = log --graph --pretty=format:'%C(bold red)%h %C(bold magenta)%d %Creset%n%C(bold yellow)%cr %Creset%C(yellow)(on %cd)%Creset%n%ae%n%C(cyan)%s%n%Creset'
 
 [color]
 	ui = auto
