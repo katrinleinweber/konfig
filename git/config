@@ -30,23 +30,28 @@
 	tool = Kaleidoscope
 [core]
 	excludesfile = ~/.config/git/ignore
+[rebase]
+	# https://twitter.com/codeinthehole/status/873210484555689988
+    instructionFormat = %s [%an]
 
 [alias]
 	last = log -1 HEAD
+	ld = diff HEAD~0 HEAD~1
     	cs = clone --depth=1 --no-single-branch	
+	ol = git log --oneline
 
 	# https://gist.github.com/katrinleinweber/f89a07bda89bd9f98b34a831b8c2105a
 	ad = !bash ~/.config/git/Arbeitsdreieck.sh
 	
 	# http://haacked.com/archive/2014/07/28/github-flow-aliases/
-	amend = commit -a --amend
+	am = commit -a --amend
 	cm = !git add -A && git commit -m
 	co = checkout
 	cob = checkout -b
 #	ec = config --global -e
 	ec = !nano ~/.config/git/config 
 	save = !git add -A && git commit -m "SAVEPOINT"
-	start = !git pull --rebase --prune $@ && git submodule update --init --recursive
+	up = !git pull --rebase --prune $@ && git submodule update --init --recursive
 	undo = reset HEAD~1 --mixed
     wip = commit -am "WIP"
     wipe = !git add -A && git commit -qm "WIPE SAVEPOINT" && git reset HEAD~1 --hard
