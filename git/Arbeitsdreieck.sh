@@ -1,5 +1,6 @@
 #!/usr/bin/env bash
-set -e
+set -eux -o pipefail
+# learned from codeinthehole.com/tips/bash-error-reporting
 
 UPSTREAM=$1
 ME=katrinleinweber
