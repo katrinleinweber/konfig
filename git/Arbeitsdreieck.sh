@@ -7,7 +7,6 @@ ME=katrinleinweber
 
 git clone \
 	--depth=1 \
-	--no-single-branch \
 	--origin upstream \
 	$UPSTREAM 
 
