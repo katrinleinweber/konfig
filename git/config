@@ -44,17 +44,17 @@
 	ad = !bash ~/.config/git/Arbeitsdreieck.sh
 	
 	# http://haacked.com/archive/2014/07/28/github-flow-aliases/
-	am = commit -a --amend
-	cm = !git add -A && git commit -m
+	am = commit --all --amend
+	cm = !git add --all && git commit --message
 	co = checkout
-	cob = checkout -b
-#	ec = config --global -e
+	cob = checkout --branch
+#	ec = config --global --edit
 	ec = !nano ~/.config/git/config 
-	save = !git add -A && git commit -m "SAVEPOINT"
+	save = !git add --all && git commit -m "SAVEPOINT"
 	up = !git pull --rebase --prune $@ && git submodule update --init --recursive
 	undo = reset HEAD~1 --mixed
     wip = commit -am "WIP"
-    wipe = !git add -A && git commit -qm "WIPE SAVEPOINT" && git reset HEAD~1 --hard
+	wipe = !git add --all && git commit --quiet -m "WIPE SAVEPOINT" && git reset HEAD~1 --hard
 
 	# https://www.jessesquires.com/blog/customizing-git-log/
     me = me '!git smartlog --author=Katrin Leinweber'
