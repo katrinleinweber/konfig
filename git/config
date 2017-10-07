@@ -53,7 +53,7 @@
 	save = !git add --all && git commit -m "SAVEPOINT"
 	up = !git pull --rebase --prune $@ && git submodule update --init --recursive
 	undo = reset HEAD~1 --mixed
-    wip = commit -am "WIP"
+	wip = commit --all --untracked-files -m "WIP"
 	wipe = !git add --all && git commit --quiet -m "WIPE SAVEPOINT" && git reset HEAD~1 --hard
 
 	# https://www.jessesquires.com/blog/customizing-git-log/
