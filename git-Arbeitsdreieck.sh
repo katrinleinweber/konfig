@@ -1,4 +1,8 @@
 #!/usr/bin/env bash
+
+# erste Version & Erklärung auf:
+# gist.github.com/katrinleinweber/f89a07bda89bd9f98b34a831b8c2105a
+
 set -eux -o pipefail
 # learned from codeinthehole.com/tips/bash-error-reporting
 
