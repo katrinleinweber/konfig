@@ -32,12 +32,12 @@
 	excludesfile = ~/.config/git/ignore
 [rebase]
 	# https://twitter.com/codeinthehole/status/873210484555689988
-    instructionFormat = %s [%an]
+	instructionFormat = %s [%an]
 
 [alias]
 	last = log -1 HEAD
 	ld = diff HEAD~0 HEAD~1
-    	cs = clone --depth=1 --no-single-branch	
+	cs = clone --depth=1 --no-single-branch	
 	ol = git log --oneline
 
 	# https://gist.github.com/katrinleinweber/f89a07bda89bd9f98b34a831b8c2105a
