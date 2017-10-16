@@ -41,7 +41,7 @@
 	ol = git log --oneline
 
 	# https://gist.github.com/katrinleinweber/f89a07bda89bd9f98b34a831b8c2105a
-	ad = !bash ~/.config/git/Arbeitsdreieck.sh
+	ad = !bash ~/.config/git-Arbeitsdreieck.sh
 	
 	# http://haacked.com/archive/2014/07/28/github-flow-aliases/
 	am = commit --all --amend
