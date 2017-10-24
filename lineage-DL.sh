@@ -1,12 +1,14 @@
 #!/usr/bin/env bash
 set -eux -o pipefail
-# learned from codeinthehole.com/tips/bash-error-reporting
+# gelernt von codeinthehole.com/tips/bash-error-reporting
 
-### USAGE
-# 1. go to download.lineageos.org
-# 2. click on your device's manufacturer and model name
-# 3. copy the link to the SHA265 (NOT to the .zip!)
-# 4. run ./lineage-DL.sh $SHA_URL
+### Benutzung
+# 1. browse zu download.lineageos.org
+# 2. finde Hersteller und Modellnummer Deines Smartphones
+# 3. kopiere den SHA256-Link (NICHT den zur .zip!)
+# 4. tippe ./lineage-DL.sh ins Terminal
+# 5. füge die SHA-URL ein
+# 6. Bumm! Zack! Return!
 
 SHA_URL="$1"
 ZIP_URL=`echo $SHA_URL | cut -f 1 -d \?`
@@ -17,4 +19,6 @@ wget -O $SHA_FILE "$SHA_URL"
 
 shasum -a 256 -c $SHA_FILE
 rm $SHA_FILE
+
+# [ ] Idee: Download löschen, wenn SHA-Summe nicht passt
 # if return != "OK" => rm `basename $ZIP_URL`
