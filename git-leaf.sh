@@ -5,8 +5,7 @@ set -eux -o pipefail
 
 # gelernt von stackoverflow.com/questions/6245570#comment74304422_6245587
 BRANCH=`git rev-parse --abbrev-ref HEAD`
-BRANCH_WIP=`echo $BRANCH | sed -e "s;$BRANCH;$BRANCH-WIP;"`
 
-git checkout -b $BRANCH_WIP
+git checkout -b `echo $BRANCH | sed -e "s;$BRANCH;$BRANCH-WIP;"`
 git commit --all --untracked-files -m "WIP-leaf"
 git checkout $BRANCH
