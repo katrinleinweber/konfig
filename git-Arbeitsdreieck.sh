@@ -14,7 +14,7 @@ git clone \
 	--origin upstream \
 	$UPSTREAM 
 
-cd `echo $UPSTREAM | cut -f 5 -d / | cut -f 1 -d .` 
+cd `echo $UPSTREAM | cut -f 5 -d / | sed "s/\.git$//"`
 
 # konstruiere URL meines fork & setze als origin
 UP_USR=`echo $UPSTREAM | cut -f 4 -d /`
