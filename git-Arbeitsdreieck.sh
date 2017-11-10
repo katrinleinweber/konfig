@@ -16,7 +16,7 @@ git clone \
 
 cd `echo $UPSTREAM | cut -f 5 -d / | sed "s/\.git$//"`
 
-# konstruiere URL meines fork & setze als origin
+# konstruiere URL meines fork, mit user@ & setze als origin
 UP_USR=`echo $UPSTREAM | cut -f 4 -d /`
 ORIGIN=`echo $UPSTREAM | sed "s;//;//$ME@;"`
 ORIGIN=`echo $ORIGIN | sed -e "s;$UP_USR;$ME;"`
