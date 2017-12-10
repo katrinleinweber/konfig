@@ -48,7 +48,7 @@
 	am = commit --all --amend
 	cm = !git add --all && git commit --message
 	co = checkout
-	cob = checkout --branch
+	cob = checkout -b
 #	ec = config --global --edit
 	ec = !nano ~/.config/git/config 
 	up = !git pull --rebase --prune $@ && git submodule update --init --recursive
