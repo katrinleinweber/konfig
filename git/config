@@ -1,6 +1,6 @@
 [user]
 	name = Katrin Leinweber
-	email = katrin.leinweber@uni-konstanz.de
+	email = 9948149+katrinleinweber@users.noreply.github.com
 [filter "media"]
 	required = true
 	clean = git media clean %f
