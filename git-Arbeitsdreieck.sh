@@ -9,16 +9,16 @@ set -eux -o pipefail
 UPSTREAM=$1
 ME=katrinleinweber
 
-git clone \
-	--depth=1 \
-	--no-single-branch \
-	--origin upstream \
-	$UPSTREAM 
-
-cd `echo $UPSTREAM | cut -f 5 -d / | sed "s/\.git$//"`
-
-# konstruiere URL meines fork, mit user@ & setze als origin
+# konstruiere URL meines fork, mit user@ & clone davon
 UP_USR=`echo $UPSTREAM | cut -f 4 -d /`
 ORIGIN=`echo $UPSTREAM | sed "s;//;//$ME@;"`
 ORIGIN=`echo $ORIGIN | sed -e "s;$UP_USR;$ME;"`
-git remote add origin $ORIGIN
+
+git clone \
+	--depth=1 \
+	--no-single-branch \
+	$ORIGIN 
+
+cd `echo $UPSTREAM | cut -f 5 -d / | sed "s/\.git$//"`
+
+git remote add upstream $UPSTREAM
