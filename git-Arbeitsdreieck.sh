@@ -24,3 +24,4 @@ REPO=`echo $UPSTREAM | cut -f 5 -d / | sed "s/\.git$//"`
 atom $REPO
 cd $REPO
 git remote add upstream $UPSTREAM
+github
