@@ -8,6 +8,11 @@ set -eux -o pipefail
 
 UPSTREAM=$1
 ME=katrinleinweber
+BRANCH=""
+
+if [ $# -gt 1 ]; then
+    BRANCH="--branch=$2"
+fi
 
 # konstruiere URL meines fork, mit user@ & clone davon
 UP_USR=`echo $UPSTREAM | cut -f 4 -d /`
@@ -16,7 +21,7 @@ ORIGIN=`echo $ORIGIN | sed -e "s;$UP_USR;$ME;"`
 
 git clone \
 	--depth=2 \
-	--no-single-branch \
+	$BRANCH \
 	$ORIGIN 
 
 REPO=`echo $UPSTREAM | cut -f 5 -d / | sed "s/\.git$//"`
