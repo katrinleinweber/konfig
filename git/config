@@ -41,9 +41,10 @@
 	cs = clone --depth=3 --no-single-branch
 	ol = git log --oneline
 
-	# https://gist.github.com/katrinleinweber/f89a07bda89bd9f98b34a831b8c2105a
+	# https://gist.github.com/katrinleinweber
 	ad = !bash ~/.config/git-Arbeitsdreieck.sh
-	
+	dx = !bash ~/.config/clone-rm-dx.sh
+
 	# http://haacked.com/archive/2014/07/28/github-flow-aliases/
 	am = commit --all --amend
 	cm = !git add --all && git commit --message
