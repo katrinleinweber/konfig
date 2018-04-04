@@ -20,7 +20,7 @@ ORIGIN=`echo $UPSTREAM | sed "s;//;//$ME@;"`
 ORIGIN=`echo $ORIGIN | sed -e "s;/$UP_USR/;/$ME/;"`
 
 git clone \
-	--depth=3 \
+	--depth=2 \
 	--shallow-submodules \
 	$BRANCH \
 	$ORIGIN
