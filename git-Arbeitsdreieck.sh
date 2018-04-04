@@ -17,7 +17,7 @@ fi
 # konstruiere URL meines fork, mit user@ & clone davon
 UP_USR=`echo $UPSTREAM | cut -f 4 -d /`
 ORIGIN=`echo $UPSTREAM | sed "s;//;//$ME@;"`
-ORIGIN=`echo $ORIGIN | sed -e "s;$UP_USR;$ME;"`
+ORIGIN=`echo $ORIGIN | sed -e "s;/$UP_USR/;/$ME/;"`
 
 git clone \
 	--depth=3 \
