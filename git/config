@@ -37,13 +37,13 @@
 [alias]
 	last = log -1 HEAD
 	ld = diff HEAD~0 HEAD~1
-	leaf = !bash ~/.config/git-leaf.sh
+	leaf = !bash ~/.config/git/leaf.sh
 	cs = clone --depth=3 --no-single-branch
 	ol = git log --oneline
 
 	# https://gist.github.com/katrinleinweber
-	ad = !bash ~/.config/git-Arbeitsdreieck.sh
-	dx = !bash ~/.config/clone-rm-dx.sh
+	ad = !bash ~/.config/git/Arbeitsdreieck.sh
+	dx = !bash ~/.config/git/clone-rm-dx.sh
 
 	# http://haacked.com/archive/2014/07/28/github-flow-aliases/
 	am = commit --all --amend
