@@ -64,7 +64,7 @@ grep \
 
 # prepare pull/merge request on Git{Hub|Lab}
 git add *
-git commit -m "Link DOIs to preferred resolver"
+git commit -m "Hyperlink DOIs against preferred resolver"
 git push -u origin $BRANCH
 
 # prepare clean up
