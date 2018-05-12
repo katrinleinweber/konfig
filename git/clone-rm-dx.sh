@@ -67,5 +67,4 @@ git add *
 git commit -m "Hyperlink DOIs against preferred resolver"
 git push -u origin $BRANCH
 
-# prepare clean up
-echo "rm -rf $REPO" | pbcopy
+rm -rf $REPO
