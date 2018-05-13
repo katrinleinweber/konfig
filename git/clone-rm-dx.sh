@@ -6,9 +6,6 @@
 # 1. Copy this gist into a local folder of yours (e.g. ~/forks/).
 # 2. Make it executable with `chmod +x ~/path/to/clone-rm-dx.sh`
 # 3. Add your Git{Hub|Lab} username here:
-
-ME=katrinleinweber
-
 # 4. Find target repos on https://github.com/search?o=desc&q=dx.doi&s=indexed&type=Code&utf8=%E2%9C%93
 # 5. Insepct the code: can `dx.doi.org` be savely updated? Inspect tests,
 #    regular expression, etc. in particular. Only proceed if you are very sure
@@ -23,29 +20,10 @@ ME=katrinleinweber
 set -eux -o pipefail
 # learned from codeinthehole.com/tips/bash-error-reporting
 
-UPSTREAM=$1
+REPO=`echo $1 | cut -f 2 -d /`
 
-# if non-default branch should be checked-out, supply it after the repo's URL
-BRANCH=""
-if [ $# -gt 1 ]; then
-   BRANCH="--branch=$2"
-fi
-
-# construct URL of my fork
-UP_USR=`echo $UPSTREAM | cut -f 4 -d /`
-ORIGIN=`echo $UPSTREAM | sed "s;//;//$ME@;"`
-ORIGIN=`echo $ORIGIN | sed -e "s;$UP_USR;$ME;"`
-
-git clone \
-	--depth=2 \
-	--shallow-submodules \
-	$BRANCH \
-	$ORIGIN
-
-# link local repo to upstream
-REPO=`echo $UPSTREAM | cut -f 5 -d / | sed "s/\.git$//"`
+gfork --depth=2 $1
 cd $REPO
-git remote add upstream $UPSTREAM
 
 # prepare pull/merge request on Git{Hub|Lab}
 BRANCH=resolve-DOIs-securely
@@ -66,5 +44,7 @@ grep \
 git add *
 git commit -m "Hyperlink DOIs against preferred resolver"
 git push -u origin $BRANCH
+ME=echo `git remote get-url origin` | cut -f 4 -d /
+open https://github.com/$1/compare/master...$ME:$BRANCH
 
 rm -rf $REPO
