@@ -31,7 +31,8 @@ grep \
   --ignore-case \
   --files-with-matches \
   --recursive \
-  --exclude '*.pdf|*.zip' \
+  --exclude '*.pdf' \
+  --exclude '*.zip' \
   --extended-regexp 'https?://(dx\.)?doi\.org' \
   * | xargs -I@ sed -Ei '' \
   's_https?://(dx\.)?doi\.org_https://doi.org_g' @
