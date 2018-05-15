@@ -41,4 +41,5 @@ ME=$(echo $ME | cut -f 4 -d /)
 open https://github.com/$1/compare/master...$ME:$BRANCH
 
 # clean up
+cd ..
 rm -rf $REPO
