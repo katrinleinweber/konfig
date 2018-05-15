@@ -17,7 +17,7 @@
 set -eux -o pipefail
 # learned from codeinthehole.com/tips/bash-error-reporting
 
-REPO=`echo $1 | cut -f 2 -d /`
+REPO=$(echo $1 | cut -f 2 -d /)
 
 gfork --depth=2 $1
 cd $REPO
@@ -36,8 +36,8 @@ rg -g '!*.{pdf,zip}' \
 # Start pull request
 git commit --all -m "Hyperlink DOIs against preferred resolver"
 git push --set-upstream origin $BRANCH
-ME=echo `git remote get-url origin`
-ME=`echo $ME | cut -f 4 -d /`
+ME=$(echo $(git remote get-url origin))
+ME=$(echo $ME | cut -f 4 -d /)
 open https://github.com/$1/compare/master...$ME:$BRANCH
 
 # clean up
