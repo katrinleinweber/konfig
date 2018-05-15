@@ -27,14 +27,10 @@ BRANCH=resolve-DOIs-securely
 git checkout -b $BRANCH
 
 # learned from https://stackoverflow.com/a/19861378
-grep \
-  --ignore-case \
-  --files-with-matches \
-  --recursive \
-  --exclude '*.pdf' \
-  --exclude '*.zip' \
-  --extended-regexp 'https?://(dx\.)?doi\.org' \
-  * | xargs -I@ sed -Ei '' \
+rg -g '!*.{pdf,zip}' \
+  -e 'https?://(dx\.)?doi\.org' \
+  --files-with-matches | \
+  xargs -I@ sed -Ei '' \
   's_https?://(dx\.)?doi\.org_https://doi.org_g' @
 
 # Start pull request
