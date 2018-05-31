@@ -10,9 +10,9 @@
 # 5. Insepct the code: can `dx.doi.org` be savely updated? Inspect tests,
 #    regular expression, etc. in particular. Only proceed if you are very sure
 #    that you don't break anything, that you don't feel comfortable fixing.
-# 6. Copy the user- & repo name from its GitHub page in the top left. It has the form "username/reponame".
-# 7. In a bash terminal, execute this script with `~/path/to/clone-rm-dx.sh username/reponame`.
-# 8. Fill put the pull request form.
+# 6. Copy the repo's URL.
+# 7. In a bash terminal, execute this script with `~/path/to/clone-rm-dx.sh ` followed by the URL.
+# 8. Fill out the pull request form, explaining your changes.
 
 set -eux -o pipefail
 # learned from codeinthehole.com/tips/bash-error-reporting
