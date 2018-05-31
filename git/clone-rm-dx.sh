@@ -38,7 +38,8 @@ git commit --all -m "Hyperlink DOIs against preferred resolver"
 git push --set-upstream origin $BRANCH
 ME=$(echo $(git remote get-url origin))
 ME=$(echo $ME | cut -f 4 -d /)
-open https://github.com/$1/compare/master...$ME:$BRANCH
+BASE=$(git branch --list | head -1)
+open https://github.com/$1/compare/$BASE...$ME:$BRANCH
 
 # clean up
 cd ..
