@@ -20,10 +20,10 @@ set -eux -o pipefail
 DEPTH=1
 REPO=$(echo $1 | cut -f 2 -d /)
 
-cd $REPO
 gfork --depth=$DEPTH $1
 
 # prepare pull request on GitHub
+cd $REPO
 BRANCH=resolve-DOIs-securely
 git checkout -b $BRANCH
 
