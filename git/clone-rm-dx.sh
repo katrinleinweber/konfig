@@ -37,7 +37,9 @@ BRANCH=resolve-DOIs-securely
 git checkout -b $BRANCH
 
 # learned from https://stackoverflow.com/a/19861378
-rg -g '!*.{pdf,zip}' \
+rg \
+  -g '!*/{src/test,src/main/resources}/*' \
+  -g '!*.{pdf,zip}' \
   -e 'https?://(dx\.)?doi\.org' \
   --files-with-matches | \
   xargs -I@ sed -Ei '' \
