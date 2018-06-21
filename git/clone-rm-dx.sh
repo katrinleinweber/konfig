@@ -21,6 +21,7 @@ DEPTH=1
 REPO=$(echo $1 | cut -f 2 -d /)
 
 gfork --depth=$DEPTH $1
+# git clone --depth=$DEPTH $1  # needs 'cut -f 5 -d /' above
 
 # log size
 log_repo_size(){
