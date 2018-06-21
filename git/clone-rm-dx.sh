@@ -17,10 +17,11 @@
 set -eux -o pipefail
 # learned from codeinthehole.com/tips/bash-error-reporting
 
+DEPTH=1
 REPO=$(echo $1 | cut -f 2 -d /)
 
-gfork --depth=2 $1
 cd $REPO
+gfork --depth=$DEPTH $1
 
 # prepare pull request on GitHub
 BRANCH=resolve-DOIs-securely
