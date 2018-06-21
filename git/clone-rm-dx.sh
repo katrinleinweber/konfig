@@ -22,6 +22,14 @@ REPO=$(echo $1 | cut -f 2 -d /)
 
 gfork --depth=$DEPTH $1
 
+# log size
+log_repo_size(){
+	BYTES=$(find $REPO/.git | xargs stat -f%z | awk '{ s+=$1 } END { print s }')
+	COMMIT_ID=$(cd $REPO && git rev-parse HEAD) # learned from https://stackoverflow.com/questions/949314/
+	echo "\"$(date -R)\",\"$COMMIT_ID\",\"$1\",\"$2\",$DEPTH,$BYTES" >> ~/shallow-clone-sizes.csv
+}
+log_repo_size $1 "shallow"
+
 # prepare pull request on GitHub
 cd $REPO
 BRANCH=resolve-DOIs-securely
@@ -44,4 +52,12 @@ open https://github.com/$1/compare/$BASE...$ME:$BRANCH
 
 # clean up
 cd ..
+rm -rf $REPO
+
+
+# log size again
+gfork $1
+# git clone $1  # needs 'cut -f 5 -d /' above
+DEPTH=$(cd $REPO && git rev-list --count HEAD)
+log_repo_size $1 "full"
 rm -rf $REPO
