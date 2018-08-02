@@ -59,8 +59,7 @@
 	cm = !git add --all && git commit --message
 	co = checkout
 	cob = checkout -b
-#	ec = config --global --edit
-	ec = !atom ~/.config/git/config
+ 	ec = config --global --edit
 	up = !git pull --rebase --prune $@ && git submodule update --init --recursive
 	undo = reset HEAD~1 --mixed
 
