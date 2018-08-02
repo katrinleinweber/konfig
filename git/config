@@ -35,6 +35,15 @@
 	instructionFormat = %s [%an]
 
 [alias]
+	# legit
+	switch = !legit switch
+	sync = !legit sync
+	publish = !legit publish
+	unpublish = !legit unpublish
+	undo = !legit undo
+	branches = !legit branches
+
+	# own
 	last = log -1 HEAD
 	ld = diff HEAD~0 HEAD~1
 	leaf = !bash ~/.config/git/leaf.sh
