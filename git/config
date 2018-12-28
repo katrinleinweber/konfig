@@ -30,9 +30,13 @@
 	tool = Kaleidoscope
 [core]
 	excludesfile = ~/.config/git/ignore
+	pager = diff-so-fancy | less --tabs=4 -RFX
 [rebase]
 	# https://twitter.com/codeinthehole/status/873210484555689988
 	instructionFormat = %s [%an]
+[pager]
+       #diff = diff-so-fancy | less --tabs=1,5 -RFX
+       #show = diff-so-fancy | less --tabs=1,5 -RFX
 
 [alias]
 	# legit
@@ -68,4 +72,16 @@
 	sl = log --graph --pretty=format:'%C(bold red)%h %C(bold magenta)%d %Creset%n%C(bold yellow)%cr %Creset%C(yellow)(on %cd)%Creset%n%ae%n%C(cyan)%s%n%Creset'
 
 [color]
-	ui = auto
+	ui = true
+[color "diff-highlight"]
+	oldNormal = red bold
+	oldHighlight = red bold 52
+	newNormal = green bold
+	newHighlight = green bold 22
+[color "diff"]
+	meta = yellow
+	frag = magenta bold
+	commit = yellow bold
+	old = red bold
+	new = green bold
+	whitespace = red reverse
