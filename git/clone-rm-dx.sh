@@ -15,7 +15,7 @@
 # 8. Fill out the pull request form, explaining your changes.
 
 set -eux -o pipefail
-# learned from codeinthehole.com/tips/bash-error-reporting
+# learned from https://codeinthehole.com/tips/bash-error-reporting/
 
 DEPTH=1
 REPO=$(echo $1 | cut -f 2 -d /)
@@ -33,6 +33,7 @@ log_repo_size $1 "shallow"
 
 # prepare pull request on GitHub
 cd $REPO
+BASE=$(git branch --list | head -1 | sed -E 's/ *//')
 BRANCH=resolve-DOIs-securely
 git checkout -b $BRANCH
 
@@ -46,11 +47,10 @@ rg \
   's_https?://(dx\.)?doi\.org_https://doi.org_g' @
 
 # Start pull request
-git commit --all -m "Hyperlink DOIs against preferred resolver"
+git commit --all -m "Hyperlink DOIs to preferred resolver"
 git push --set-upstream origin $BRANCH
 ME=$(echo $(git remote get-url origin))
 ME=$(echo $ME | cut -f 4 -d /)
-BASE=$(git branch --list | head -1 | sed -E 's/ *//')
 open https://github.com/$1/compare/$BASE...$ME:$BRANCH
 
 # clean up
