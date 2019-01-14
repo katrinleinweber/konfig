@@ -44,7 +44,7 @@ rg \
   -g '!*.{pdf,zip}' \
   -e 'https?://(w+\.)?(dx\.)?doi\.org' \
   --files-with-matches | \
-  xargs -I@ sed -Ei '' \
+  xargs -I@ perl -i -pe \
   's/https?:\/\/(w+\.)?(dx\.)?doi\.org\/(.*)/https:\/\/doi.org\/\3/g' @
 
 # Start pull request
