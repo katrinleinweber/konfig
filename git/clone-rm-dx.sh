@@ -42,10 +42,10 @@ git checkout -b $BRANCH
 rg \
   -g '!*/{src/test,src/main/resources}/*' \
   -g '!*.{pdf,zip}' \
-  -e 'https?://(dx\.)?doi\.org' \
+  -e 'https?://(w+\.)?(dx\.)?doi\.org' \
   --files-with-matches | \
   xargs -I@ sed -Ei '' \
-  's_https?://(dx\.)?doi\.org_https://doi.org_g' @
+  's/https?:\/\/(w+\.)?(dx\.)?doi\.org\/(.*)/https:\/\/doi.org\/\3/g' @
 
 # Start pull request
 git commit --all -m "Hyperlink DOIs to preferred resolver"
