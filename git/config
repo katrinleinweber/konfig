@@ -22,6 +22,7 @@
 	trustexitcode = true
 [merge]
 	tool = Kaleidoscope
+	autostash = true
 [difftool "Kaleidoscope"]
 	cmd = ksdiff --partial-changeset --relative-path \"$MERGED\" -- \"$LOCAL\" \"$REMOTE\"
 [difftool]
@@ -32,6 +33,7 @@
 	excludesfile = ~/.config/git/ignore
 	pager = diff-so-fancy | less --tabs=4 -RFX
 [rebase]
+	autoStash = true
 	# https://twitter.com/codeinthehole/status/873210484555689988
 	instructionFormat = %s [%an]
 [pager]
