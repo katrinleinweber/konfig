@@ -69,7 +69,7 @@
 	co = checkout
 	cob = checkout -b
  	ec = config --global --edit
-	up = !git pull --rebase --prune $@ && git submodule update --init --recursive
+	up = !git pull --ff-only --prune $@ && git submodule update --init --recursive && git push
 	undo = reset HEAD~1 --mixed
 	cu = !git branch --merged master | grep -v '^[ *]*master$' | xargs git branch -d
 
