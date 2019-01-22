@@ -75,7 +75,7 @@
 
 	# https://www.jessesquires.com/blog/customizing-git-log/
 	me = !git sl --author='Katrin Leinweber'
-	sl = log --graph --pretty=format:'%C(bold red)%h %C(bold magenta)%d %Creset%n%C(bold yellow)%cr %Creset%C(yellow)(on %cd)%Creset%n%ae%n%C(cyan)%s%n%Creset'
+	sl = log --graph --pretty=format:'%C(bold red)%h %C(bold magenta)%d %Creset%s'
 
 	# https://blog.andrewray.me/a-better-git-blame/
 	sb = log -p -M --follow --stat --
