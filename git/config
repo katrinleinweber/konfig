@@ -30,9 +30,14 @@
 [diff]
 	tool = Kaleidoscope
 [core]
+	protocolVersion = 2
 	excludesfile = ~/.config/git/ignore
 	editor = /Applications/Sublime\\ Text.app/Contents/SharedSupport/bin/subl -n -w
 	pager = diff-so-fancy | less --tabs=4 -RFX
+	commitGraph = true
+
+[gc]
+	writecommitGraph = true
 [rebase]
 	autoStash = true
 	# https://twitter.com/codeinthehole/status/873210484555689988
