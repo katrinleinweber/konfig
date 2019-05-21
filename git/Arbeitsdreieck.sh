@@ -28,7 +28,7 @@ git clone \
 
 REPO=`echo $UPSTREAM | cut -f 5 -d / | sed "s/\.git$//"`
 
-atom $REPO
+st $REPO
 cd $REPO
 git remote add upstream $UPSTREAM
 echo $REPO | pbcopy
