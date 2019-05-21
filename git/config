@@ -72,6 +72,7 @@
 	# https://gist.github.com/katrinleinweber
 	ad = !bash ~/.config/git/Arbeitsdreieck.sh
 	dx = !bash ~/.config/git/clone-rm-dx.sh
+	cran = !bash ~/.config/git/clone-cran.sh
 	ft = !bash ~/.config/git/clone-fix-typo.sh
 
 	# http://haacked.com/archive/2014/07/28/github-flow-aliases/
