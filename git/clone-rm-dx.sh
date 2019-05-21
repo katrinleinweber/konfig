@@ -45,19 +45,17 @@ rg \
   -e 'https?://(w+\.)?(dx\.)?doi\.org' \
   --files-with-matches | \
   xargs -I@ perl -i -pe \
-  's/https?:\/\/(w+\.)?(dx\.)?doi\.org\/(.*)/https:\/\/doi.org\/\3/g' @
+  's/https?:\/\/(w+\.)?(dx\.)?doi\.org/https:\/\/doi.org/g' @
 
 # Start pull request
-git commit --all -m "Hyperlink DOIs to preferred resolver"
+git commit --all --message "Hyperlink DOIs to preferred resolver"
 git push --set-upstream origin $BRANCH
 ME=$(echo $(git remote get-url origin))
 ME=$(echo $ME | cut -f 4 -d /)
 open https://github.com/$1/compare/$BASE...$ME:$BRANCH
 
-# clean up
-cd ..
-rm -rf $REPO
-
+# prepare clean up
+echo "rm -rf $REPO" | pbcopy
 
 # log size again
 gfork $1
