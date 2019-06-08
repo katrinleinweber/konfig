@@ -64,10 +64,8 @@
 	# own
 	last = log -1 HEAD
 	ld = diff HEAD~0 HEAD~1
-	leaf = !bash ~/.config/git/leaf.sh
 	cs = clone --depth=3 --no-single-branch
 	ol = git log --oneline
-	cp = cherry-pick
 
 	# https://gist.github.com/katrinleinweber
 	ad = !bash ~/.config/git/Arbeitsdreieck.sh
@@ -76,10 +74,6 @@
 	ft = !bash ~/.config/git/clone-fix-typo.sh
 
 	# http://haacked.com/archive/2014/07/28/github-flow-aliases/
-	am = commit --all --amend
-	cm = !git add --all && git commit --message
-	co = checkout
-	cob = checkout -b
  	ec = config --global --edit
 	up = !git pull --ff-only --prune $@ && git submodule update --init --recursive && git push
 	undo = reset HEAD~1 --mixed
@@ -92,13 +86,7 @@
 	# https://blog.andrewray.me/a-better-git-blame/
 	sb = log -p -M --follow --stat --
 	
-	ri = rebase --interactive
-	ra = rebase --abort
-	rc = rebase --continue
-	rv = remote --verbose
-	cane = commit --amend --no-edit
 	su = stash save --include-untracked *
-	sp = stash pop
 [color]
 	ui = true
 [color "diff-highlight"]
