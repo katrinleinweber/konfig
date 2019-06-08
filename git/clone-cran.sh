@@ -6,17 +6,18 @@ set -eux -o pipefail
 # learned from https://codeinthehole.com/tips/bash-error-reporting/
 
 DEPTH=1
-OWNER=$(echo $1 | cut -f 1 -d /)
-REPO=$(echo $1 | cut -f 2 -d /)
+#OWNER=$(echo "$1" | cut -f 1 -d /)
+REPO=$(echo "$1" | cut -f 2 -d /)
 
 cd ~/forks
-gfork --depth=$DEPTH $1
+gfork --depth="$DEPTH" "$1"
 
 # prepare pull request on GitHub
-cd $REPO
+cd "$REPO" || exit 1
+(
 BASE=$(git branch --list | head -1 | sed -E 's/ *//')
 BRANCH=canonicalize-cran-links
-git checkout -b $BRANCH
+git checkout -b "$BRANCH"
 
 # learned from https://stackoverflow.com/a/19861378
 rg \
@@ -41,12 +42,12 @@ MSG='Canonicalize CRAN links'
 #See https://cran.r-project.org/doc/manuals/R-exts.html#Specifying-URLs'
 git commit --all --message "$MSG"
 
-htmlproofer $(git diff-tree --no-commit-id --name-only -r HEAD)
+htmlproofer "$(git diff-tree --no-commit-id --name-only -r HEAD)"
 
-git push --set-upstream origin $BRANCH
-ME=$(echo $(git remote get-url origin))
-ME=$(echo $ME | cut -f 4 -d /)
-open https://github.com/$1/compare/$BASE...$ME:$BRANCH
+git push --set-upstream origin "$BRANCH"
+ME=$(git remote get-url origin)
+ME=$(echo "$ME" | cut -f 4 -d /)
+open https://github.com/"$1/compare/$BASE...$ME:$BRANCH"
 
 PR_DESC="[CRAN asks to use the `package=` URL variant](https://cran.r-project.org/doc/manuals/R-exts.html#Specifying-URLs) when linking to packages ;-) This PR results from a semi-automatic search-and-replace script and implements their suggestion."
 
@@ -58,9 +59,9 @@ PR_DESC="[CRAN asks to use the `package=` URL variant](https://cran.r-project.or
 # 	"base": "'$BASE'"
 # }' > cran-pr.txt
 
-echo $PR_DESC | pbcopy
+echo "$PR_DESC" | pbcopy
+)
 
 # clean up
-cd ..
-rm -rf $REPO
+rm -rf "$REPO"
 

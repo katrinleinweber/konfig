@@ -6,7 +6,7 @@
 set -eux -o pipefail
 # gelernt von codeinthehole.com/tips/bash-error-reporting
 
-UPSTREAM=$1
+UPSTREAM="$1"
 ME=katrinleinweber
 BRANCH=""
 
@@ -15,20 +15,20 @@ if [ $# -gt 1 ]; then
 fi
 
 # konstruiere URL meines fork, mit user@ & clone davon
-UP_USR=`echo $UPSTREAM | cut -f 4 -d /`
-ORIGIN=`echo $UPSTREAM | sed "s;//;//$ME@;"`
-ORIGIN=`echo $ORIGIN | sed -e "s;/$UP_USR/;/$ME/;"`
+UP_USR=$(echo "$UPSTREAM" | cut -f 4 -d /)
+ORIGIN=$(echo "$UPSTREAM" | sed "s;//;//$ME@;")
+ORIGIN=$(echo "$ORIGIN" | sed -e "s;/$UP_USR/;/$ME/;")
 
 git clone \
 	--depth=2 \
 	--shallow-submodules \
     --no-single-branch \
-	$BRANCH \
-	$ORIGIN
+	"$BRANCH" \
+	"$ORIGIN"
 
-REPO=`echo $UPSTREAM | cut -f 5 -d / | sed "s/\.git$//"`
+REPO=$(echo $UPSTREAM | cut -f 5 -d / | sed "s/\.git$//")
 
-st $REPO
-cd $REPO
-git remote add upstream $UPSTREAM
-echo $REPO | pbcopy
+st "$REPO"
+cd "$REPO"
+git remote add upstream "$UPSTREAM"
+echo "$REPO" | pbcopy

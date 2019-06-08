@@ -18,10 +18,10 @@ set -eux -o pipefail
 # learned from https://codeinthehole.com/tips/bash-error-reporting/
 
 DEPTH=1
-REPO=$(echo $1 | cut -f 2 -d /)
+REPO=$(echo "$1" | cut -f 2 -d /)
 
 cd ~/forks
-gfork --depth=$DEPTH $1
+gfork --depth=$DEPTH "$1"
 # git clone --depth=$DEPTH $1  # needs 'cut -f 5 -d /' above
 
 # log size
@@ -33,10 +33,10 @@ log_repo_size(){
 log_repo_size $1 "shallow"
 
 # prepare pull request on GitHub
-cd $REPO
+cd "$REPO" || exit 1
 BASE=$(git branch --list | head -1 | sed -E 's/ *//')
 BRANCH=resolve-DOIs-securely
-git checkout -b $BRANCH
+git checkout -b "$BRANCH"
 
 # learned from https://stackoverflow.com/a/19861378
 rg \
@@ -49,10 +49,9 @@ rg \
 
 # Start pull request
 git commit --all --message "Hyperlink DOIs to preferred resolver"
-git push --set-upstream origin $BRANCH
-ME=$(echo $(git remote get-url origin))
-ME=$(echo $ME | cut -f 4 -d /)
-open https://github.com/$1/compare/$BASE...$ME:$BRANCH
+git push --set-upstream origin "$BRANCH"
+ME=$(git remote get-url origin | cut -f 4 -d /)
+open https://github.com/"$1/compare/$BASE...$ME:$BRANCH"
 
 # prepare clean up
 echo "rm -rf $REPO" | pbcopy
