@@ -34,7 +34,7 @@ log_repo_size $1 "shallow"
 
 # prepare pull request on GitHub
 cd "$REPO" || exit 1
-BASE=$(git branch --list | head -1 | sed -E 's/ *//')
+BASE=$(git rev-parse --abbrev-ref HEAD)
 BRANCH=resolve-DOIs-securely
 git checkout -b "$BRANCH"
 

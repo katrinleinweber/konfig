@@ -15,7 +15,7 @@ gfork --depth="$DEPTH" "$1"
 # prepare pull request on GitHub
 cd "$REPO" || exit 1
 (
-BASE=$(git branch --list | head -1 | sed -E 's/ *//')
+BASE=$(git rev-parse --abbrev-ref HEAD)
 BRANCH=canonicalize-cran-links
 git checkout -b "$BRANCH"
 
