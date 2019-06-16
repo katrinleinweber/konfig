@@ -44,10 +44,8 @@ git commit --all --message "$MSG"
 
 htmlproofer "$(git diff-tree --no-commit-id --name-only -r HEAD)"
 
-git push --set-upstream origin "$BRANCH"
-ME=$(git remote get-url origin)
-ME=$(echo "$ME" | cut -f 4 -d /)
-open https://github.com/"$1/compare/$BASE...$ME:$BRANCH"
+git push --set-upstream origin "$BRANCH" 2> GH.txt
+open $(rg "pull/new" GH.txt | cut -f7 -d' ')
 
 PR_DESC="[CRAN asks to use the `package=` URL variant](https://cran.r-project.org/doc/manuals/R-exts.html#Specifying-URLs) when linking to packages ;-) This PR results from a semi-automatic search-and-replace script and implements their suggestion."
 

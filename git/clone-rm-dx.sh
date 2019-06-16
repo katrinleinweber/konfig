@@ -49,9 +49,8 @@ rg \
 
 # Start pull request
 git commit --all --message "Hyperlink DOIs to preferred resolver"
-git push --set-upstream origin "$BRANCH"
-ME=$(git remote get-url origin | cut -f 4 -d /)
-open https://github.com/"$1/compare/$BASE...$ME:$BRANCH"
+git push --set-upstream origin "$BRANCH" 2> GH.txt
+open $(rg "pull/new" GH.txt | cut -f7 -d' ')
 
 # prepare clean up
 echo "rm -rf $REPO" | pbcopy
