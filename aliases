@@ -1,0 +1,30 @@
+
+alias a='alias | rg'
+alias ping='prettyping --nolegend'
+alias st='/Applications/Sublime\ Text.app/Contents/SharedSupport/bin/subl .'
+
+# https://opensource.com/article/18/9/tips-productivity-zsh
+#alias ls='ls --color=tty'
+
+alias wh='wormhole'
+alias whs='wormhole send'
+alias wht='wormhole send --text'
+alias whr='wormhole receive'
+# if tor: --launch-tor to avoid error
+
+# oh-my-ZSH common-aliases
+alias dud='du -d 1 -h'
+alias duf='du -sh *'
+alias fd='find . -type d -name'
+alias ff='find . -type f -name'
+alias h='history'
+alias t='tail -f'
+
+
+alias a.g="atom . && github ."
+alias chrome="/Applications/Google\ Chrome.app/Contents/MacOS/Google\ Chrome --no-pings"
+alias ytpl="youtube-dl -f 18"
+alias ythd="youtube-dl -f 22 --no-playlist"
+alias yt="ytpl --no-playlist"
+alias yta="youtube-dl -x --audio-format mp3 --no-playlist"
+
