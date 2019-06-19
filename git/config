@@ -46,6 +46,7 @@
 	writecommitGraph = true
 [rebase]
 	autoStash = true
+	autoSquash = true
 	# https://twitter.com/codeinthehole/status/873210484555689988
 	instructionFormat = %s [%an]
 [pager]

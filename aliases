@@ -28,3 +28,6 @@ alias ythd="youtube-dl -f 22 --no-playlist"
 alias yt="ytpl --no-playlist"
 alias yta="youtube-dl -x --audio-format mp3 --no-playlist"
 
+# https://thoughtbot.com/blog/autosquashing-git-commits
+alias gfu="git commit --fixup"
+alias gfu:="git commit --fixup :/"
