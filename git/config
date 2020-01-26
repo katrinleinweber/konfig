@@ -1,6 +1,6 @@
 [user]
 	name = Katrin Leinweber
-	email = 9948149+katrinleinweber@users.noreply.github.com
+	email = kalei@posteo.de
 [filter "media"]
 	required = true
 	clean = git media clean %f
@@ -20,39 +20,26 @@
 [mergetool "Kaleidoscope"]
 	cmd = ksdiff --merge --output \"$MERGED\" --base \"$BASE\" -- \"$LOCAL\" --snapshot \"$REMOTE\" --snapshot
 	trustexitcode = true
-[mergetool "sourcetree"]
-	cmd = /Applications/Sourcetree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
-	trustExitCode = true
 [merge]
 	tool = Kaleidoscope
 	autostash = true
-[difftool "Kaleidoscope"]
-	cmd = ksdiff --partial-changeset --relative-path \"$MERGED\" -- \"$LOCAL\" \"$REMOTE\"
-[difftool "sourcetree"]
-	cmd = opendiff \"$LOCAL\" \"$REMOTE\"
-	path = 
-[difftool]
-	prompt = false
-[diff]
-	tool = Kaleidoscope
 [core]
 	protocolVersion = 2
+	autocrlf = input
 	excludesfile = ~/.config/git/ignore
 	editor = /Applications/Sublime\\ Text.app/Contents/SharedSupport/bin/subl -n -w
-	pager = diff-so-fancy | less --tabs=4 -RFX
+	# editor = "open -W -n"
+	# pager = delta --dark
 	commitGraph = true
-
 [gc]
 	writecommitGraph = true
+[credential]
+	helper = osxkeychain
 [rebase]
 	autoStash = true
 	autoSquash = true
 	# https://twitter.com/codeinthehole/status/873210484555689988
-	instructionFormat = %s [%an]
-[pager]
-       #diff = diff-so-fancy | less --tabs=1,5 -RFX
-       #show = diff-so-fancy | less --tabs=1,5 -RFX
-
+	# instructionFormat = %s [%an]
 [alias]
 	# legit
 	switch = !legit switch
@@ -66,7 +53,6 @@
 	last = log -1 HEAD
 	ld = diff HEAD~0 HEAD~1
 	cs = clone --depth=3 --no-single-branch
-	ol = git log --oneline
 
 	# https://gist.github.com/katrinleinweber
 	ad = !bash ~/.config/git/Arbeitsdreieck.sh
@@ -78,16 +64,7 @@
  	ec = config --global --edit
 	up = !git pull --ff-only --prune $@ && git submodule update --init --recursive && git push
 	undo = reset HEAD~1 --mixed
-	cu = !git branch --merged master | grep -v '^[ *]*master$' | xargs git branch -d
 
-	# https://www.jessesquires.com/blog/customizing-git-log/
-	me = !git sl --author='Katrin Leinweber'
-	sl = log --graph --pretty=format:'%C(bold red)%h %C(bold magenta)%d %Creset%s'
-
-	# https://blog.andrewray.me/a-better-git-blame/
-	sb = log -p -M --follow --stat --
-	
-	su = stash save --include-untracked *
 [color]
 	ui = true
 [color "diff-highlight"]
@@ -102,3 +79,11 @@
 	old = red bold
 	new = green bold
 	whitespace = red reverse
+[http]
+	cookiefile = /Users/katrinleinweber/.gitcookies
+[interactive-rebase-tool]
+	autoSelectNext = true
+[gpg]
+	program = /usr/local/MacGPG2/bin/gpg2
+[commit]
+	verbose = 1
