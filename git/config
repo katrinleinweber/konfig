@@ -75,4 +75,4 @@
 [gpg]
 	program = /usr/local/MacGPG2/bin/gpg2
 [commit]
-	verbose = 1
+	verbose = 2
