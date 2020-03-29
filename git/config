@@ -76,3 +76,6 @@
 	program = /usr/local/MacGPG2/bin/gpg2
 [commit]
 	verbose = 2
+[blame]
+	coloring = repeatedLines
+	showEmail = true
