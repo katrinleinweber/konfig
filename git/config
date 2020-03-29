@@ -72,8 +72,6 @@
 	whitespace = red reverse
 [http]
 	cookiefile = /Users/katrinleinweber/.gitcookies
-[interactive-rebase-tool]
-	autoSelectNext = true
 [gpg]
 	program = /usr/local/MacGPG2/bin/gpg2
 [commit]
